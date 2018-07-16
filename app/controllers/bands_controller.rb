@@ -1,5 +1,7 @@
 class BandsController < ApplicationController
-    def index
-    end
     
+    def index
+        @bands = current_user.favorite_bands
+    end
+
 end
