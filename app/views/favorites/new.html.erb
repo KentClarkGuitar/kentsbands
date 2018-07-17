@@ -1,0 +1,19 @@
+<h1>Add Another Favorite</h1>
+
+<% if @bands.count != current_user.favorite_bands.count %>
+    <% @bands.each do |b| %>
+        <% if !current_user.favorite_bands.exists?(b.id) %>
+            <div>
+                <%= b.name %>
+                <%= link_to " +", band_favorites_path(b), method: :post %>
+                <%# b.performances.each do |p| %>
+
+                <%# end %>
+            </div>
+        <% end %>
+    <% end %>
+<% else %>
+    <h3>Dude, no bands, you've already favorited all of them - remember?</h3>
+<% end %>
+
+<input></input>

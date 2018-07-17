@@ -3,9 +3,13 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
 
-  resources :users 
+  resources :users, only: [:new, :create]
+  
+  get '/favorites/new', to: 'favorites#new'
+  resources :bands do
+    resources :favorites, shallow: true, except: :new
+  end
 
-  resources :bands
 
 end
 
