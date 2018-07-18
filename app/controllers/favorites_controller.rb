@@ -2,6 +2,7 @@ class FavoritesController < ApplicationController
     
     def new
         @bands = Band.all
+        @band = Band.new
     end
 
     def create

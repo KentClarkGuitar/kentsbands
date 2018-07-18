@@ -1,0 +1,34 @@
+<h1><%= @band.name %></h1>
+
+<div class="performances">
+    <h2>Performances</h2>
+    <table class="table striped-table">
+        <thead>
+            <tr><th>Date/Time</th><th>Venue</th></tr>
+        </thead>
+        <tbody>
+            <% if @band.performances.count == 0 %>
+                <tr><td colspan="2">This Band Has No Upcoming Performances</td></tr>
+            <% else %>
+                <% @band.performances.each do |p| %>
+                    <tr><td><%= p.showtime %></td><td><%= p.venue %></td></tr>
+                <% end %>
+            <% end %>
+        </tbody>
+    </table>
+    <hr>
+    <h4>Add a Performance</h4>
+    <%= form_for [@band, @performance] do |f| %>
+        <div>
+            <%= f.label :showtime %>
+            <%= f.datetime_local_field :showtime %>
+        </div>
+        <div>
+            <%= f.label :venue %>
+            <%= f.text_field :venue %>
+        </div>
+        <div>
+            <%= f.submit "Add" %>
+        </div>
+    <% end %>
+</div>

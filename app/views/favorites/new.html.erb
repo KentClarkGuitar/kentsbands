@@ -16,4 +16,10 @@
     <h3>Dude, no bands, you've already favorited all of them - remember?</h3>
 <% end %>
 
-<input></input>
+<h3>Add a Band:</h3>
+
+<%= form_for @band do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.submit %>
+<% end %>

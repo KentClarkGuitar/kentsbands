@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_16_205003) do
+ActiveRecord::Schema.define(version: 2018_07_18_181918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(version: 2018_07_16_205003) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+  create_table "performances", force: :cascade do |t|
+    t.datetime "showtime"
+    t.string "venue"
+    t.bigint "band_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["band_id"], name: "index_performances_on_band_id"
+    t.index ["user_id"], name: "index_performances_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -43,4 +54,6 @@ ActiveRecord::Schema.define(version: 2018_07_16_205003) do
   add_foreign_key "bands", "users"
   add_foreign_key "favorites", "bands"
   add_foreign_key "favorites", "users"
+  add_foreign_key "performances", "bands"
+  add_foreign_key "performances", "users"
 end

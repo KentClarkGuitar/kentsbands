@@ -13,7 +13,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
 
-  <body>
+  <body class="container">
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
@@ -31,16 +31,14 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="/">Home</a></li>
-            <!-- <li><a href="/about">About</a></li> -->
             <% if current_user %>
+              <li><%= link_to "My Fav Bands", bands_path %></li>
               <li>
-                <!-- <a href="#contact">Contact</a> -->
                 <%= link_to 'Log out', session_path(current_user.id), method: :delete %>
               </li>
             <% else %>
               <li>
                 <a href="/sessions/new">Log in</a>
-                <%#= link_to 'Log In', sessions, method: :delete %>
               </li>
             <% end %>  
           </ul>

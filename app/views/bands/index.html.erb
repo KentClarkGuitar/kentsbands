@@ -1,11 +1,8 @@
 <h1>Favorite Bands</h1>
 
-<% @bands.each do |b| %>
+<% @bands.each do |band| %>
     <div>
-        <%= b.name %>
-        <%# b.performances.each do |p| %>
-
-        <%# end %>
+        <%= link_to band.name, band_path(band) %>
     </div>
 <% end %>
 
