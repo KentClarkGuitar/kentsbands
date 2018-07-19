@@ -1,34 +1,49 @@
-<h1><%= @band.name %></h1>
+<div class="row">
 
-<div class="performances">
-    <h2>Performances</h2>
-    <table class="table striped-table">
-        <thead>
-            <tr><th>Date/Time</th><th>Venue</th></tr>
-        </thead>
-        <tbody>
-            <% if @band.performances.count == 0 %>
-                <tr><td colspan="2">This Band Has No Upcoming Performances</td></tr>
-            <% else %>
-                <% @band.performances.each do |p| %>
-                    <tr><td><%= p.showtime %></td><td><%= p.venue %></td></tr>
+    <h1><%= @band.name %></h1>
+
+    <div class="performances col-md-7">
+        <h2>Performances</h2>
+        <table id="performances" class="table striped-table"><% link_to %>
+            <thead>
+                <tr><th>Date/Time</th><th>Venue</th><th></th></tr>
+            </thead>
+            <tbody>
+                <% if @band.performances.count == 0 %>
+                    <tr><td colspan="3" class="text-center">This Band Has No Upcoming Performances</td></tr>
+                <% else %>
+                    <% @band.performances.each do |p| %>
+                        <tr>
+                            <td><%= p.showtime.strftime('%m/%d/%Y %H:%M %p') %></td>
+                            <td><%= p.venue %></td>
+                            <td>
+                                <%= link_to "✎", edit_performance_path(p) %>
+                                <%= link_to "🗑", performance_path(p), method: :delete %>
+                            </td>
+                        </tr>
+                    <% end %>
                 <% end %>
-            <% end %>
-        </tbody>
-    </table>
-    <hr>
-    <h4>Add a Performance</h4>
-    <%= form_for [@band, @performance] do |f| %>
-        <div>
-            <%= f.label :showtime %>
-            <%= f.datetime_local_field :showtime %>
+            </tbody>
+        </table>
+    </div>
+    <div class= "row">
+    <div class="col-md-4 col-md-offset-1">
+        <h4>Add a Performance</h4>
+      
+        <%= form_for [@band, @performance] do |f| %>
+            <div class="showtime form-group">
+                <%= f.label :showtime %>
+                <%= f.datetime_local_field :showtime, class: "form-control"%>
+            </div>
+            <div class="performance form-group">
+                <%= f.label :venue %>
+                <%= f.text_field :venue, class: "form-control" %>
+            </div>
+            <div>
+                <%= f.submit "Add Performance", class: "btn btn-success"%>
+            </div>
+        <% end %>
         </div>
-        <div>
-            <%= f.label :venue %>
-            <%= f.text_field :venue %>
-        </div>
-        <div>
-            <%= f.submit "Add" %>
-        </div>
-    <% end %>
-</div>
+    </div>
+    </div>
+</div> 

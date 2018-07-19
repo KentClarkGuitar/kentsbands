@@ -1,9 +1,25 @@
-<h1>Favorite Bands</h1>
+<div class="row text-center">
 
-<% @bands.each do |band| %>
-    <div>
-        <%= link_to band.name, band_path(band) %>
+    <div class="col-xs-6 col-xs-offset-3">
+
+        <h1>Favorite Bands</h1>
+
+        <table id="fav-bands" class="table">
+            <thead>
+                <tr><th>Band</th><th>Remove Fav</th></tr>
+            </thead>
+            <tbody>
+                <% @bands.each do |band| %>
+                    <tr>
+                        <td><%= link_to band.name, band_path(band) %></td>
+                        <td><%= link_to "🗑", band_favorites_path(band), method: :delete %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+
+        <%= link_to "Add Another Favorite", favorites_new_path, class: "btn btn-info" %>
+    
     </div>
-<% end %>
 
-<%= link_to "Add Another Favorite", favorites_new_path, class: "btn btn-info"%>
+</div>

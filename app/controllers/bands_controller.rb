@@ -1,7 +1,7 @@
 class BandsController < ApplicationController
     
     def index
-        @bands = current_user.favorite_bands
+        @bands = current_user.favorite_bands.order(:name)
     end
 
     def show
@@ -22,6 +22,15 @@ class BandsController < ApplicationController
         end
     end
 
+
+    def delete
+        @band = Band.find(params[:id]).destroy
+        p "*" *100
+        p params 
+        p "*" *100
+        # redirect_to :action => 'band'
+        redirect_to band_favorites_url
+    end
     private
 
     def band_params

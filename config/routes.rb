@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/login', to: 'session#new'
   get '/logout', to: 'sessions#destroy'
 
-
+  delete '/bands/:id/favorites', to: 'favorites#delete'
 
   resources :bands do
     resources :favorites, shallow: true, except: :new

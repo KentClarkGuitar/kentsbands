@@ -18,3 +18,19 @@
  body {
      margin-top: 70px;
  }
+
+ table {
+    font-size: 20px;
+ }
+
+ #fav-bands td:first-child {
+     text-align: left;
+ }
+
+ #fav-bands td:last-child, #fav-bands th:last-child  {
+     text-align: center;
+ }
+
+ #performances td:last-child, #performances th:last-child  {
+    text-align: center;
+}

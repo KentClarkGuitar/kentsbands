@@ -1,0 +1,16 @@
+<h1>Edit Performance</h1>
+
+<%= form_for @performance do |f| %>
+    <div class="showtime">
+        <%= f.label :showtime %>
+        <%= f.datetime_local_field :showtime %>
+    </div>
+    <div class="performance">
+        <%= f.label :venue %>
+        <%= f.text_field :venue %>
+    </div>
+    <div>
+        
+        <%= f.submit "Update" %>
+    </div>
+<% end %>
