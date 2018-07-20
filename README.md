@@ -1,6 +1,6 @@
 ![ss1](https://i.imgur.com/VpBiXED.png)
-![ss2](https://imgur.com/cB4yzYo)
-![ss3](https://imgur.com/JEd2HFu)
+![ss2](https://imgur.com/cB4yzYo.png)
+![ss3](https://imgur.com/JEd2HFu.png)
 
 # Kent's Bands
 ## Hi and welcome to Kents Bands!
