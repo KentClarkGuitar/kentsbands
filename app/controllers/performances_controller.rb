@@ -1,5 +1,5 @@
 class PerformancesController < ApplicationController
-    before_action :authorize, [:create, :destroy, :edit, :update]    
+    before_action :authorize, only: [:create, :destroy, :edit, :update]    
     def create
         @performance = Performance.new(performance_params)
         @performance.band_id = params[:band_id]

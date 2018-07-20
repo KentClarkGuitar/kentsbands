@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/favorites/new', to: 'favorites#new'
   get '/pages/:page', to: 'pages#show' 
 
-  get '/login', to: 'session#new'
+  get '/login', to: 'sessions#new'
   get '/logout', to: 'sessions#destroy'
 
   delete '/bands/:id/favorites', to: 'favorites#delete'

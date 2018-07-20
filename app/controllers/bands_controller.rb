@@ -1,5 +1,5 @@
 class BandsController < ApplicationController
-    before_action :authorize, [:show, :create, :delete]
+    before_action :authorize
     def index
         @bands = current_user.favorite_bands.order(:name)
     end

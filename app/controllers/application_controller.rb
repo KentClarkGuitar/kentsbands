@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
     def authorize
-        redirect_to login_path, unless current_user
+        redirect_to login_path if current_user.nil?
     end 
 
     private 
